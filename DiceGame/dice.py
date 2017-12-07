@@ -3,6 +3,7 @@ import random
 class Dice:
     sides = 6
     num_rolled = random.randint(1,sides)
+    high_score = 0#initially the high score is zero
 
     def roll(self):
         num_rolled = random.randint(1,self.sides)
@@ -39,6 +40,9 @@ class Dice:
                     print("you suck! you rolled a ", num_rolled)
                     int(points)
                     print("Points: ", points)
+                    if points > self.high_score:
+                        self.high_score = points
+                    print("high score: ", self.high_score)
                     rolling = False
                     self.loop()
             elif decision.lower() == "lo":
@@ -51,7 +55,11 @@ class Dice:
                     print("you lose! you rolled a", num_rolled)
                     int(points)
                     print("Points:", points)
+                    if points > self.high_score:
+                        self.high_score = points
+                    print("high score: ", self.high_score)
                     rolling = False
                     self.loop()
+
 
         return prev_num_rolled
